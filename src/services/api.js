@@ -10,12 +10,8 @@ export const obtenerLicitaciones = async (filtros = {}) => {
   console.log('Parametros de búsqueda:', params);
   if(params.size>0) {
     params = '&' + params;
-    response = await axios.get(`${API_BASE}/licitaciones.json?${API_TICKET}${params}`);
   }
-  else {
-    console.log('No se aplicaron filtros, usando datos de ejemplo');
-    return licitaciones;
-  }
+  response = await axios.get(`${API_BASE}/licitaciones.json?${API_TICKET}${params}`);
   return response.data;
 };
 

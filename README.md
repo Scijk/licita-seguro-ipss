@@ -1,12 +1,73 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Versión:** 1.0.0 
+**Fecha:** 10/06/2025 
+**Desarrollado por:** Christopher Gómez para FrontEnd Ipss
 
-Currently, two official plugins are available:
+tejelanas_vivi/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── Footer.jsx
+│   │   ├── Header.jsx
+│   │   └── LicitacionCard.jsx
+│   ├── pages/
+│   │   ├── BuscarProveedor.jsx
+│   │   ├── DetalleLicitacion.jsx
+│   │   ├── Home.jsx
+│   │   └── Licitaciones.jsx
+│   ├── services/
+│   │   └── api.js
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+└── README.md
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **public/**: Archivos estáticos.
+- **src/**: Código fuente principal.
+  - **components/**: Componentes reutilizables de React.
+  - **pages/**: Componentes utilizados para las pantallas.
+  - **services/**: Se utiliza para las llamadas a las apis externas.
+- **App.js**: Componente principal de la aplicación. Orquesta las rutas a las distintas páginas.
 
-## Expanding the ESLint configuration
+1. Clonar el repositorio:
+   ```sh
+   git clone https://github.com/Scijk/licita-seguro-ipss.git
+   cd licita-seguro-ipss
+   ```
+2. Instala las dependencias:
+   ```sh
+   npm install
+   ```
+3. Inicia la aplicación en modo desarrollo:
+   ```sh
+   npm run dev
+   ```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Uso de los Componentes
+
+- **Header**: Muestra la cabecera y navegación principal.
+  ```jsx
+  import Header from './components/Header';
+  <Header />
+  ```
+- **Footer**: Pie de página con información de contacto o enlaces.
+  ```jsx
+  import Footer from './components/Footer';
+  <Footer />
+  ```
+
+Puedes personalizar los componentes y pasarles props según tus necesidades.
+
+## Scripts Disponibles
+
+- `npm run dev`: Ejecuta la app en modo desarrollo.
+- `npm run lint`: Ejecuta los tests con lint.
+- `npm run build`: Genera una versión optimizada para producción.
+- `npm run preview`: Expone la previsualización de la versión de producción en un servidor local.
