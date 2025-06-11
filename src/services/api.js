@@ -1,5 +1,4 @@
 import axios from 'axios';
-import licitaciones from '../ResponseTodasLicitaciones.json'
 
 const API_BASE = 'https://api.mercadopublico.cl/servicios/v1/publico';
 const API_TICKET = 'ticket=AC3A098B-4CD0-41AF-81A5-41284248419B';
