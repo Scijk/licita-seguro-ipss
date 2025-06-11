@@ -62,7 +62,7 @@ const Licitaciones = () => {
 
   useEffect(() => {
     if (filtrosRestaurados) {
-      setFecha(filtrosRestaurados.fechaDesde || null);
+      setFecha(filtrosRestaurados.fecha || null);
       setEstado(filtrosRestaurados.estado || '');
     }
     handleBuscar(); // Buscar al cargar
@@ -83,10 +83,29 @@ const Licitaciones = () => {
             <DatePicker
               label="Fecha a buscar"
               value={fecha}
-              onChange={(newValue) => setFecha(newValue)}
+              maxDate={dayjs()}
+              onChange={(newValue) => {
+                if (!newValue || !dayjs(newValue).isValid()) {
+                  setFecha(null); // fecha inválida (mal escrita, por ejemplo)
+                } else if (dayjs(newValue).isAfter(dayjs(), 'day')) {
+                  setFecha(null); // fecha futura no permitida
+                } else {
+                  setFecha(newValue);
+                }}
+              }
               format="DD/MM/YYYY"
-              slotProps={{ textField: { fullWidth: true } }}
-            />
+              slotProps={{
+                textField: {
+                  fullWidth: true,
+                  error: !!fecha && (!dayjs(fecha).isValid() || dayjs(fecha).isAfter(dayjs(), 'day')),
+                  helperText:
+                    !!fecha && (!dayjs(fecha).isValid()
+                      ? 'Fecha inválida'
+                      : dayjs(fecha).isAfter(dayjs(), 'day')
+                      ? 'La fecha no puede ser mayor a la fecha actual'
+                      : ''),
+                },
+              }}/>
           </Grid>
           <Grid item xs={12} sm={3} sx={{ minWidth: '15%' }}>
             <TextField
@@ -94,9 +113,7 @@ const Licitaciones = () => {
               select
               fullWidth
               value={estado}
-              onChange={(e) => setEstado(e.target.value)}
-              
-            >
+              onChange={(e) => setEstado(e.target.value)}>
               {estados.map((e) => (
                 <MenuItem key={e} value={e}>
                   {e}
@@ -161,8 +178,7 @@ const Licitaciones = () => {
               count={totalPaginas}
               page={pagina}
               onChange={(e, value) => setPagina(value)}
-              color="primary"
-            />
+              color="primary"/>
           </Box>
         </>
       )}
