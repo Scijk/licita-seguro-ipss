@@ -4,7 +4,7 @@
 **Fecha:** 10/06/2025 
 **Desarrollado por:** Christopher Gómez para FrontEnd Ipss
 
-tejelanas_vivi/
+licita-seguro-ipss/
 ├── public/
 │   └── index.html
 ├── src/
