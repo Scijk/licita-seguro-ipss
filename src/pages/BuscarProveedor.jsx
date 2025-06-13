@@ -101,7 +101,7 @@ const BuscarProveedor = () => {
           error={!rutValido}
           helperText={!rutValido ? 'RUT inválido' : ''}
         />
-        <Button variant="contained" onClick={handleBuscar} disabled={!rutValido || loading}>
+        <Button variant="contained" onClick={handleBuscar} disabled={!rutValido || loading || rut === ''}>
           Buscar
         </Button>
       </Box>
